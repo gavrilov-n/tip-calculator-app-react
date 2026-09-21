@@ -7,7 +7,7 @@ function TipSelector({ options = [5, 10, 15, 25, 50] }: TipSelectorProps) {
     <fieldset className="grid gap-4">
       <legend className="font-bold text-gray-500 mb-2">Select Tip %</legend>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
         {options.map((option) => (
           <div key={option}>
             <input
