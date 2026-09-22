@@ -2,11 +2,13 @@ interface NumberFieldProps {
   label: string;
   id: string;
   iconSrc: string;
+  value: string | number
+  onChange: (value: string) => void;
 }
 
-function NumberField({ label, id, iconSrc }: NumberFieldProps) {
+function NumberField({ label, id, iconSrc, value, onChange }: NumberFieldProps) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1.5 mb-8">
       <label htmlFor={id} className="font-bold text-gray-600">
         {label}
       </label>
@@ -23,10 +25,11 @@ function NumberField({ label, id, iconSrc }: NumberFieldProps) {
           placeholder="0"
           min="0"
           max="200000"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
           className="w-full 
           pr-3 
           text-right
-          mb-8
         bg-gray-50 p-2.5 
            text-2xl 
            font-bold 
