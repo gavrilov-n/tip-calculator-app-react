@@ -1,8 +1,10 @@
 interface TipSelectorProps {
   options?: number[];
+  value: number;
+  onChange: (value: number) => void;
 }
 
-function TipSelector({ options = [5, 10, 15, 25, 50] }: TipSelectorProps) {
+function TipSelector({ options = [5, 10, 15, 25, 50], value, onChange }: TipSelectorProps) {
   return (
     <fieldset className="grid gap-4">
       <legend className="font-bold text-gray-500 mb-2">Select Tip %</legend>
@@ -15,6 +17,8 @@ function TipSelector({ options = [5, 10, 15, 25, 50] }: TipSelectorProps) {
               id={`tip-${option}`}
               name="tip"
               value={option}
+              checked = {option === value}
+              onChange={(event) => onChange(Number(event.target.value))}
               className="peer sr-only"
             />
             <label

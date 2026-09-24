@@ -16,7 +16,7 @@ function App() {
         {/*bill input*/}
         <NumberField label="Bill" id="bill" value={billAmount} onChange={(newValue) => setBillAmount(Number(newValue))} iconSrc="../public/images/icon-dollar.svg"/>
         {/* tip input radio buttons*/}
-        <TipSelector/>
+        <TipSelector value={tipPercentage} onChange={(newValue) => setTipPercentage(Number(newValue))}/>
         {/* Nr of people input*/}
         <div>
           <NumberField label="Number of People" id="people" value={nrOfPeople} onChange={(newValue) => setNrOfPeople(Number(newValue))} iconSrc="../public/images/icon-person.svg"/>
