@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface TipSelectorProps {
   options?: number[];
   value: number;
@@ -5,6 +7,19 @@ interface TipSelectorProps {
 }
 
 function TipSelector({ options = [5, 10, 15, 25, 50], value, onChange }: TipSelectorProps) {
+  const [customTip, setCustomTip] = useState("");
+
+  const handleCustomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const next = event.target.value;
+    setCustomTip(next);
+    onChange(next === "" ? 0 : Number(next));
+  };
+
+  const handleRadioChange = (option: number) => {
+    setCustomTip("");
+    onChange(option);
+  };
+
   return (
     <fieldset className="grid gap-4">
       <legend className="font-bold text-gray-500 mb-2">Select Tip %</legend>
@@ -17,8 +32,8 @@ function TipSelector({ options = [5, 10, 15, 25, 50], value, onChange }: TipSele
               id={`tip-${option}`}
               name="tip"
               value={option}
-              checked = {option === value}
-              onChange={(event) => onChange(Number(event.target.value))}
+              checked={option === value}
+              onChange={() => handleRadioChange(option)}
               className="peer sr-only"
             />
             <label
@@ -35,6 +50,8 @@ function TipSelector({ options = [5, 10, 15, 25, 50], value, onChange }: TipSele
           id="custom-tip"
           name="custom-tip"
           placeholder="Custom"
+          value={customTip}
+          onChange={handleCustomChange}
           aria-label="Custom tip percentage"
           className="w-full text-center py-2.5 rounded-md text-2xl font-bold text-[hsl(183,100%,15%)] bg-[hsl(189,47%,97%)] placeholder:text-[hsl(186,14%,43%)] cursor-pointer"
         />

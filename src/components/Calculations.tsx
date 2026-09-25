@@ -10,7 +10,7 @@ function Calculations({ text, calculations }: CalculationsProps) {
         <p className="text-white">{text}</p>
         <p className="text-gray-400">/ person</p>
       </div>
-      <p className="text-[#26c2ae] text-[48px] font-semibold">${calculations}</p>
+      <p className="text-[#26c2ae] text-[48px] font-semibold">${calculations.toFixed(2)}</p>
     </div>
   );
 }
